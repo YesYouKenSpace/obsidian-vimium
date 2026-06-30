@@ -5,10 +5,10 @@ import { MarkerData } from './types';
 import { createMarker, findMarkerMatch, updateMarkerText } from './utils';
 
 export default class Vimium extends Plugin {
-	settings: VimiumSettings;
+	settings!: VimiumSettings;
 	showMarkers = false;
 	markers: MarkerData[] = [];
-	containerEl: HTMLElement;
+	containerEl!: HTMLElement;
 	input = "";
 
 	async onload() {
@@ -101,7 +101,7 @@ export default class Vimium extends Plugin {
 		// Create markers
 		for (let i = 0; i < Math.min(clickableElements.length, tlds.length); i++) {
 			const clickableEl = clickableElements[i] as HTMLElement;
-			const text = tlds[i];
+			const text = tlds[i]!;
 			const marker = createMarker(text, clickableEl, this.input);
 			if (marker) {
 				this.markers.push(marker);
